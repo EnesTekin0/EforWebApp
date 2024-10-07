@@ -1,0 +1,31 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col"  name="email">Email</th>
+      <th scope="col">groups</th>
+      <th scope="col">hireDate</th>
+      <th scope="col">Inactive</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td data-label="Id">{{ employee.employeeId }}</td>
+      <td data-label="First Name">{{ employee.firstName }}</td>
+      <td data-label="Last Name">{{ employee.lastName }}</td>
+      <td data-label="Email">{{ employee.email }}</td>
+      <td data-label="groups">{{ employee.groups }}</td>
+      <td data-label="hireDate">{{ employee.hireDate }}</td>
+      <td data-label="Inactive">{{ employee.inactiveEmployees }}</td>
+      <td>
+        <button *ngIf="employee.employeeId !== undefined" (click)="editEmployee(employee.employeeId!)">Edit</button>
+        <button *ngIf="employee.employeeId !== undefined" (click)="deleteEmployee(employee.employeeId!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="goToCreateEmployeeForm()" id="goForm">Create New Employee</button>

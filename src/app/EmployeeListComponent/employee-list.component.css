@@ -1,0 +1,98 @@
+body {
+    font-family: 'Covered By Your Grace', cursive;
+    line-height: 1.25;
+  }
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+   
+  }
+  table tr {  
+    padding: .35em;
+    border: 1px solid rgba(29,150,178,1);
+    border-width: 1px ;  
+  }
+  
+  tr:nth-child(even) { background-color: rgba(94,93,82,.1);}
+  
+  tr:nth-child(odd) {background: #FFF}
+  
+  table th,
+  table td {
+    padding: .625em;
+  }
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background-color: rgba(29,150,178,1);
+    border: 1px solid rgba(29,150,178,1);
+    color: white;
+  }
+
+  button {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background-color: rgba(29,150,178,1);
+    border: 1px solid rgba(29,150,178,1);
+    color: white;
+    margin-left: 10px;
+  }
+
+  #goForm {
+    position: absolute;
+    right: 0;
+    padding: .625em;
+    margin: 1em ;
+  }
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+    table caption {
+      font-size: 1.3em;
+    }
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      background-color: rgba(29,150,178,1);
+    }
+     tr:nth-child(even) {background-color: rgba(94,93,82,.1);}
+     tr:nth-child(odd) {background: #FFF}
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .85em;
+      text-align: right;
+    }
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }

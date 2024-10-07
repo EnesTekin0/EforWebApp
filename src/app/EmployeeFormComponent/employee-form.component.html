@@ -1,0 +1,45 @@
+<div class="body">
+<form (ngSubmit)="submitEmployee()">
+
+    <div>
+      <label for="firstName">First Name</label>
+      <input id="firstName" [(ngModel)]="employee.firstName" name="firstName" type="text" required />
+    </div>
+  
+    <div>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" [(ngModel)]="employee.lastName" name="lastName" type="text" required />
+    </div>
+  
+    <div>
+      <label for="email">Email</label>
+      <input id="email" [(ngModel)]="employee.email" name="email" type="email" required />
+    </div>
+  
+    <div>
+      <label for="password">Password</label>
+      <input id="password" [(ngModel)]="employee.password" name="password" type="password" required />
+    </div>
+  
+    <div>
+      <label for="groups">Groups</label>
+      <input id="groups" [(ngModel)]="employee.groups" name="groups" type="text" />
+    </div>
+  
+    <div>
+      <label for="hireDate">Hire Date</label>
+      <input id="hireDate" [(ngModel)]="employee.hireDate" name="hireDate" type="date" />
+    </div>
+  
+    <div>
+      <label>
+        <input type="checkbox" [(ngModel)]="employee.inactiveEmployees" name="inactiveEmployees" />
+        Inactive Employee
+      </label>
+    </div>
+  
+    <button type="submit">{{ isEditMode ? 'Update Employee': 'Create Employee' }}</button>
+    <button type="submit" (click)="goToEmployeeList()" id="list">Go to Employee List</button>
+
+  </form>
+</div>

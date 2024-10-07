@@ -1,0 +1,70 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+form {
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px
+        rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 0;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+input[type="date"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="radio"] {
+    margin-left: 20px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+    font-size: .88em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background-color: rgba(29,150,178,1);
+    border: 1px solid rgba(29,150,178,1);
+    border-radius: 5px;
+    color: white;
+  } 
+
+ #list {
+    margin-left: .55em;
+  }
