@@ -1,14 +1,30 @@
+
 <table>
   <thead>
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">First Name</th>
+      <tr>
+        <!-- Id sütun başlığına tıklayınca sıralama yapar -->
+        <th scope="col" (click)="onSortColumn('id')">
+          Id
+          <span *ngIf="sortColumn === 'id'"> <!-- Sıralama yönünü göstermek için ok simgesi -->
+            {{ sortDirection === 'asc' ? '▲' : '▼' }}
+          </span>
+        </th>
+        <!-- First Name sütun başlığına tıklayınca sıralama yapar -->
+        <th scope="col" (click)="onSortColumn('firstName')">
+          First Name
+          <span *ngIf="sortColumn === 'firstName'"> <!-- Sıralama yönünü göstermek için ok simgesi -->
+            {{ sortDirection === 'asc' ? '▲' : '▼' }}
+          </span>
+        </th>
       <th scope="col">Last Name</th>
-      <th scope="col"  name="email">Email</th>
+      <th scope="col">Email</th>
       <th scope="col">groups</th>
       <th scope="col">hireDate</th>
       <th scope="col">Inactive</th>
-      <th scope="col"></th>
+      <th scope="col">
+
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +34,7 @@
       <td data-label="Last Name">{{ employee.lastName }}</td>
       <td data-label="Email">{{ employee.email }}</td>
       <td data-label="groups">{{ employee.groups }}</td>
-      <td data-label="hireDate">{{ employee.hireDate }}</td>
+      <td data-label="hireDate">{{employee.hireDate | date: 'dd/MM/yyyy'}}</td>
       <td data-label="Inactive">{{ employee.inactiveEmployees }}</td>
       <td>
         <button *ngIf="employee.employeeId !== undefined" (click)="editEmployee(employee.employeeId!)">Edit</button>

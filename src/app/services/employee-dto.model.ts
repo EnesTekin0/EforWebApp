@@ -4,8 +4,8 @@ export interface EmployeeDto {
     lastName: string;
     email: string;
     password: string;
-    groups: string[];
-    hireDate: Date;
+    groups?: string[];
+    hireDate?: Date;
     inactiveEmployees: boolean;
   }
   

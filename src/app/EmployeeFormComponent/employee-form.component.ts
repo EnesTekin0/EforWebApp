@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeDto } from '../services/employee-dto.model';
 import { ActivatedRoute, Router} from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.css'
 })
-export class EmployeeFormComponent implements OnInit{
+export class EmployeeFormComponent implements OnInit, OnDestroy{
   employee: EmployeeDto = {
     firstName: '',
     lastName: '',
@@ -20,6 +21,7 @@ export class EmployeeFormComponent implements OnInit{
     inactiveEmployees: false
   };
 
+  employeeSubscription!:Subscription
   isEditMode: boolean = false;
   id: number | null = null;
 
@@ -40,7 +42,7 @@ export class EmployeeFormComponent implements OnInit{
   }
 
   loadEmployee(id: number) {
-    this.employeeService.getEmployeeById(id).subscribe(
+    this.employeeSubscription = this.employeeService.getEmployeeById(id).subscribe(
       (employee: EmployeeDto) => {
         this.employee = employee;  // API'den gelen employee zaten id içerir
       },
@@ -59,7 +61,7 @@ export class EmployeeFormComponent implements OnInit{
   }
 
   createEmployee() {
-    this.employeeService.postEmployee(this.employee).subscribe(
+    this.employeeSubscription = this.employeeService.postEmployee(this.employee).subscribe(
       response => {
         console.log('Employee created successfully', response);
         this.router.navigate(['/employees']);
@@ -71,7 +73,7 @@ export class EmployeeFormComponent implements OnInit{
   }
 
   updateEmployee(id: number) {
-    this.employeeService.updateEmployee(id, this.employee).subscribe(
+    this.employeeSubscription =  this.employeeService.updateEmployee(id, this.employee).subscribe(
       response => {
         console.log('Employee updated successfully', response);
         this.router.navigate(['/employees']);
@@ -84,5 +86,11 @@ export class EmployeeFormComponent implements OnInit{
 
   goToEmployeeList() {
     this.router.navigate(['/employees']);
+  }
+
+  ngOnDestroy() {
+     if(this.employeeSubscription) {
+      this.employeeSubscription.unsubscribe();
+     }
   }
 }
