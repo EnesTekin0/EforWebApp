@@ -1,0 +1,101 @@
+<div class="page-container">
+  <div class="form-container">
+    <form [formGroup]="employeeForm" (ngSubmit)="submitEmployee()">
+      <fieldset>
+        <legend>User Personal Information</legend>
+
+        <div class="form-group">
+          <label for="first_name">Enter your first name</label>
+          <input
+            type="text"
+            id="first_name"
+            formControlName="firstName"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Enter your last name</label>
+          <input
+            type="text"
+            id="last_name"
+            formControlName="lastName"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Enter your email</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Enter your password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="groups">Enter your groups</label>
+          <input
+            type="text"
+            id="groups"
+            formControlName="groups"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="hire">Enter your hire date</label>
+          <input
+            type="date"
+            id="hire"
+            formControlName="hireDate"
+          />
+        </div>
+
+        <section class="example-section">
+          <mat-checkbox
+            formControlName="inactiveEmployees"
+          >
+            Inactive Employee
+          </mat-checkbox>
+        </section>
+
+        <div class="example-button-row">
+          <div class="example-flex-container">
+            <div class="example-button-container">
+              <button
+                mat-fab
+                extended
+                class="btn-submit"
+                type="submit"
+              >
+                {{ isEditMode ? 'Update ' : 'Create' }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="createSuccess" class="success-message">
+          Employee created successfully!
+        </div>
+        <div *ngIf="updateSuccess" class="success-message">
+          Employee updated successfully!
+        </div>
+        <div *ngIf="createError" class="error-message">
+          Tüm boşlukları doldurunuz!
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

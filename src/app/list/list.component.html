@@ -1,0 +1,30 @@
+<div class="page-container">
+    <h2>Çalışanlar</h2>
+  
+    <div class="scrollable-container  rounded">
+      <div class="employee-card-container">
+        <div *ngFor="let employee of employees" class="employee-card shadow">
+          <h3>{{ employee.firstName }} {{ employee.lastName }}</h3>
+          <p><strong>Email:</strong> {{ employee.email }}</p>
+          <p><strong>Groups:</strong> {{ employee.groups }}</p>
+          <p><strong>Hire Date:</strong> {{ employee.hireDate | date: 'dd/MM/yyyy' }}</p>
+          <p><strong>Inactive:</strong> {{ employee.inactiveEmployees ? 'Evet' : 'Hayır' }}</p>
+          <div class="action-buttons">
+            <button class="btn rounded edit-btn" (click)="editEmployee(employee.employeeId!)">Edit</button>
+            <button class="btn rounded delete-btn" (click)="deleteEmployee(employee.employeeId!)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="deleteSuccess" class="success-message">
+      Employee deleted successfully!
+    </div>
+    <button mat-button (click)="goToCreateEmployeeForm() " class="btn create-btn"><h4>New Employee</h4></button>
+  
+
+
+    
+
+  </div>
+  

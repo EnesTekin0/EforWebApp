@@ -1,0 +1,36 @@
+
+
+  .mat-toolbar{
+    background-color: #1c0f3d;
+    display: flex;
+    justify-content: flex-start;
+    position: sticky;
+    top: 0; 
+    
+  }
+  
+  .header-container{
+    width: 2350px;
+    height: 70px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+    
+  }
+
+  img {
+    width: 100px;  
+    height: auto;   
+    margin-left: 0.5cm; 
+  }
+  
+
+  
+
+
+
+
+
+  

@@ -1,0 +1,45 @@
+<div class="page-container">
+  <div class="effort-container">
+
+    
+    <div class="box-container">
+      <div class="calendar-container">
+        <h3>Select a Day</h3>
+        <div class="calendar-grid">
+          <div
+            *ngFor="let day of daysInMonth; let i = index"
+            class="day"
+            [class.selected]="i + 1 === selectedDay"
+            (click)="selectDay(i + 1)"
+          >
+            {{ i + 1 }}
+          </div>
+        </div>
+      </div>
+    </div>
+</div> <div class="down-container">
+    
+    <form (ngSubmit)="submitEffort()" class="effort-form">
+      <label for="employeeProjectId">Employee Project ID:</label>
+      <input
+        type="number"
+        id="employeeProjectId"
+        [(ngModel)]="newEffort.employeeProjectId"
+        name="employeeProjectId"
+        required
+      />
+
+      <label for="monthlyEffort">Monthly Effort (hours):</label>
+      <input
+        type="number"
+        id="monthlyEffort"
+        [(ngModel)]="newEffort.monthlyEffort"
+        name="monthlyEffort"
+        required
+        [max]="12"
+      />
+
+      <button type="submit">Add Effort</button>
+    </form>
+  </div>
+</div>
