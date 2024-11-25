@@ -1,8 +1,10 @@
-
-<mat-toolbar >
-    <div class="header-container ">
-
-    <img  src="assets/kodiks-logo-dark.svg" alt="logo">
-  
-    </div>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="navbar ">
+  <div class="header-container ">
+    <img src="assets/kodiks-logo-dark.svg" alt="logo">   
+  <span class="spacer"></span>
+    <button mat-button color="primary"(click)="navigateTo('/register')">Kaydol</button>
+    <button mat-button color="primary"(click)="navigateTo('/employee')">Çalışanlar</button>
+    <button mat-button color="primary"(click)="navigateTo('/allproject')">Projeler</button>
+    <button mat-button color="primary"(click)="navigateTo('/myproject')">Projelerim</button>
+  </div>
+</mat-toolbar>

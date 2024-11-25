@@ -46,7 +46,7 @@
   }
   
   
-  .employee-card-container {
+  .project-card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
@@ -54,7 +54,7 @@
     padding: 10px 0;
   }
   
-  .employee-card {
+  .project-card {
     background-color: #bdbcb8;
     border-radius: 12px;
     padding: 20px;
@@ -65,20 +65,20 @@
     border: 1px solid #d1d1d1;
   }
   
-  .employee-card h3 {
+  .project-card h3 {
     margin-top: 0;
     font-size: 1.4em;
     color: #121213;
     font-weight: 400;
   }
   
-  .employee-card p {
+  .project-card p {
     font-size: 0.9em;
     color: #000000;
     margin: 5px 0;
   }
   
-  .employee-card:hover {
+  .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
@@ -98,8 +98,6 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    
-    
   }
   
 
@@ -110,12 +108,11 @@
     font-weight: 400;
   }
 
-  .edit-btn {
+  .effort-btn {
     background-color: #180c36; 
-    
   }
   
-  .delete-btn {
+  .project-details-btn {
     background-color: #180c36; 
   }
   
@@ -128,14 +125,14 @@
     border-radius: 8px;
   }
   
-  .edit-btn:hover {
+  .effort-btn:hover {
     opacity: 0.85;
     transform: scale(1.05); 
     background-color: #575291; 
   
   }
   
-  .delete-btn:hover {
+  .project-details-btn:hover {
     opacity: 0.85;
     transform: scale(1.05); 
     background-color: #575291; 
@@ -147,7 +144,7 @@
     background-color: #e3e4ff;  
   
   }
-  .employee-card p {
+  .project-card p {
     color: #7A7A7A;
   }
   
@@ -160,7 +157,6 @@
     border: 0.5px solid rgb(153, 10, 10);
     border-radius: 15px;
     text-align: center;
-    
     box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
   }
   

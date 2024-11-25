@@ -79,7 +79,7 @@ export class RegisterComponent {
       password: [''],
       groups: [''],
       hireDate: [new Date()],
-      inactiveEmployees: [false],
+      activeEmployees: [true],
     });
   }
 
@@ -125,7 +125,7 @@ export class RegisterComponent {
 
         setTimeout(() => {
           this.createSuccess = false;
-          this.router.navigate(['/list']);
+          this.router.navigate(['employee']);
         }, 700);
 
       },
@@ -135,7 +135,7 @@ export class RegisterComponent {
 
         setTimeout(() => {
           this.createError = false;
-          this.router.navigate(['/register']);
+          this.router.navigate(['register']);
         }, 6000);
       }
     );
@@ -150,7 +150,7 @@ export class RegisterComponent {
 
         setTimeout(() => {
           this.updateSuccess = false;
-          this.router.navigate(['/list']);
+          this.router.navigate(['employee']);
         }, 1000);
       },
       error => {
@@ -159,7 +159,11 @@ export class RegisterComponent {
     );
   }
 
-
+  // enterEffort(id: number | undefined) {
+  //   if (id !== undefined) {
+  //     this.router.navigate(['effort']);
+  //   }
+  // }
 
   ngOnDestroy() {
     ""

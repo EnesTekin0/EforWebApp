@@ -109,12 +109,11 @@ flex-wrap: wrap;
 
 }
 
-.example-button-container {
+/* .example-button-container {
 display: flex;
 justify-content: center;
 width: 100px;
-
-}
+} */
 
 .btn-submit{
 color: #D1D1D1;

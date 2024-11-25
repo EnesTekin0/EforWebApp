@@ -6,6 +6,6 @@ export interface EmployeeDto {
     password: string;
     groups?: string[];
     hireDate?: Date;
-    inactiveEmployees: boolean;
+    activeEmployees: boolean;
   }
   

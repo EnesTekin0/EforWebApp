@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,5 +14,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   imports: [MatToolbarModule, MatButtonModule, MatIconModule],
 })
 export class HeaderComponent {
-
+  constructor(private router: Router) { } 
+  navigateTo(path: string): void { 
+    this.router.navigate([path]);
+   }
 }
