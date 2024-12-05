@@ -1,5 +1,5 @@
 export interface EmployeeProjectDto {
-    employeeProjectId?: number;
+    employeeProjectId: number;
     employeeId: number;
     projectId: number;
     effortGoals: number;

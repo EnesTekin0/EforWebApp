@@ -32,10 +32,6 @@ export class EffortService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-
-  // getEffortAmountByProjectId(employeeProjectId: number): Observable<EffortDto> {
-  //   return this.http.get<EffortDto>(`${this.apiUrl}${employeeProjectId}`);
-  // }
   createEffort(effort: EffortDto): Observable<EffortDto> {
     return this.http.post<EffortDto>(this.apiUrl, effort);
   }

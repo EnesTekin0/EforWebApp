@@ -1,31 +1,5 @@
-<div class="effort-container">
+<div  class="effort-container">
   <h1 class="effort-title">{{ projectName }}</h1>
-  <!-- <h2>Hedeflenen Efor: {{ effortGoals }} saat</h2> -->
-  
-  <!-- <table class="effort-table">
-    <thead>
-      <tr>
-        <th>Pazartesi</th>
-        <th>Salı</th>
-        <th>Çarşamba</th>
-        <th>Perşembe</th>
-        <th>Cuma</th>
-        <th>Cumartesi</th>
-        <th>Pazar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{ weeklyEffort.monday }} saat</td>
-        <td>{{ weeklyEffort.tuesday }} saat</td>
-        <td>{{ weeklyEffort.wednesday }} saat</td>
-        <td>{{ weeklyEffort.thursday }} saat</td>
-        <td>{{ weeklyEffort.friday }} saat</td>
-        <td>{{ weeklyEffort.saturday }} saat</td>
-        <td>{{ weeklyEffort.sunday }} saat</td>
-      </tr>
-    </tbody>
-  </table> -->
 
   <form [formGroup]="effortForm" (ngSubmit)="onSubmit()">
     <div>

@@ -159,12 +159,6 @@ export class RegisterComponent {
     );
   }
 
-  // enterEffort(id: number | undefined) {
-  //   if (id !== undefined) {
-  //     this.router.navigate(['effort']);
-  //   }
-  // }
-
   ngOnDestroy() {
     ""
     if (this.employeeSubscription) {

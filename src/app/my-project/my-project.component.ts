@@ -3,62 +3,85 @@ import { ProjectService } from '../services/project.service';
 import { ProjectDto } from '../services/project-dto.model';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-
 import { EmployeeProjectService } from '../services/employeeproject.service';
 import { EmployeeProjectDto } from '../services/employeeproject-dto.model';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-my-project',
   templateUrl: './my-project.component.html',
-  styleUrls: ['./my-project.component.css']
+  styleUrls: ['./my-project.component.css'],
 })
 export class MyProjectComponent implements OnInit, OnDestroy {
-
-  project: ProjectDto[] = [];
-  employeeProject: EmployeeProjectDto[] = [];
-
-  employeeProjectId: number | null = null;
+  projects: ProjectDto[] = [];
+  employeeProjects: EmployeeProjectDto[] = [];
+  filteredProjects: any[] = [];
 
   projectSubscription!: Subscription;
-  employee: any;
+  employeeProjectSubscription!: Subscription;
+  employeeId: number = 1; 
 
   constructor(
     private projectService: ProjectService,
-    private employeeprojectService: EmployeeProjectService,
+    private employeeProjectService: EmployeeProjectService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.loadProjects();
-    // this.loadEmployeeProjects();
+    this.loadEmployeeProjects();
+  }
+
+  loadEmployeeProjects() {
+    this.employeeProjectSubscription = this.employeeProjectService
+      .getEmployeeProjectsByEmployeeId(this.employeeId)
+      .subscribe(
+        (data: EmployeeProjectDto[]) => {
+          this.employeeProjects = data;
+          console.log('Employee Projects:', this.employeeProjects);
+          this.loadProjects(); // EmployeeProject'leri yüklendikten sonra projeleri yükleyelim
+        },
+        (error) => {
+          console.error('Error loading employee projects', error);
+        }
+      );
   }
 
   loadProjects() {
     this.projectSubscription = this.projectService.getProject().subscribe(
       (data: ProjectDto[]) => {
-        this.project = data;
+        this.projects = data;
+        console.log('Projects:', this.projects);
+        this.filterProjectsByEmployee(); // Projeleri filtreleyelim
       },
-      error => {
+      (error) => {
         console.error('Error loading projects', error);
       }
     );
   }
 
-  // loadEmployeeProjects() {
-  //   this.projectSubscription = this.employeeprojectService.getEmployeeProject().subscribe(
-  //     (data: EmployeeProjectDto[]) => {
-  //       this.employeeProject = data;
-  //     },
-  //     error => {
-  //       console.error('Error loading projects', error);
-  //     }
-  //   );
-  // }
+  filterProjectsByEmployee() {
+    const employeeProjectIds = this.employeeProjects
+      .map((ep) => ep.projectId)
+      .filter((id): id is number => id !== undefined);
+    this.filteredProjects = this.projects
+      .filter((project) => employeeProjectIds.includes(project.projectId!))
+      .map((project) => {
+        const employeeProject = this.employeeProjects.find(
+          (ep) => ep.projectId === project.projectId
+        );
+        return {
+          ...project,
+          employeeProjectId: employeeProject?.employeeProjectId,
+          effortGoals: employeeProject?.effortGoals,
+        };
+      });
+  }
 
   enterEffort(id: number | undefined) {
-    if (id !== undefined) {
-      this.router.navigate(['/effort', id]);
+    const employeeProject = this.filteredProjects.find(
+      (project) => project.projectId === id
+    );
+    if (employeeProject) {
+      this.router.navigate(['/effort', employeeProject.employeeProjectId]);
     }
   }
 
@@ -71,6 +94,9 @@ export class MyProjectComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.projectSubscription) {
       this.projectSubscription.unsubscribe();
+    }
+    if (this.employeeProjectSubscription) {
+      this.employeeProjectSubscription.unsubscribe();
     }
   }
 }

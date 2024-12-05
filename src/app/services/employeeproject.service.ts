@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EmployeeProjectDto } from './employeeproject-dto.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -46,8 +45,9 @@ export class EmployeeProjectService {
     return this.http.delete<void>(`${this.apiUrl}/${employeeId}/${projectId}`);
   }
 
-
-  getEffortGoalsByProjectId(employeeProjectId: number): Observable<EmployeeProjectDto> {
+  getEffortGoalsByProjectId(
+    employeeProjectId: number
+  ): Observable<EmployeeProjectDto> {
     return this.http.get<EmployeeProjectDto>(
       `${this.apiUrl}${employeeProjectId}`
     );
@@ -61,12 +61,21 @@ export class EmployeeProjectService {
     return this.http.get<EmployeeProjectDto[]>(this.apiUrl);
   }
 
-  getEffortAmountByProjectId(projectId: number): Observable<EmployeeProjectDto> {
+  getEffortAmountByProjectId(
+    projectId: number
+  ): Observable<EmployeeProjectDto> {
     return this.http.get<EmployeeProjectDto>(`${this.apiUrl}/${projectId}`);
-}
-
+  }
 
   createEffort(effort: EmployeeProjectDto): Observable<EmployeeProjectDto> {
     return this.http.post<EmployeeProjectDto>(this.apiUrl, effort);
+  }
+
+  getEmployeeProjectsByEmployeeId(
+    employeeId: number
+  ): Observable<EmployeeProjectDto[]> {
+    return this.http.get<EmployeeProjectDto[]>(
+      `${this.apiUrl}/by-employee/${employeeId}`
+    );
   }
 }
