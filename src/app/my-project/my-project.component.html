@@ -1,19 +1,18 @@
-  <div class="page-container">
-    <h2>Projelerim</h2>
-    <div class="scrollable-container rounded">
-        <div class="project-card-container">
-    <div *ngFor="let project of filteredProjects" class="project-card shadow">
-      <h3>{{ project.projectName }}</h3>
-      <p>Başlangıç Tarihi: {{ project.startDate |date: 'dd/MM/yyyy' }}</p>
-      <p>Bitiş Tarihi: {{ project.endDate |date: 'dd/MM/yyyy' }}</p>
-      <p>Aktif mi?: {{ project.activeProjects ? 'Evet' : 'Hayır'}}</p>
-       <p>Hedeflenen efor: {{ project.effortGoals }} saat</p>
-      <div class="action-buttons">
-      <button (click)="enterEffort(project.projectId)" class="btn rounded effort-btn">Efor Gir</button>
-      <button (click)="viewDetails(project.projectId)" class="btn rounded project-details-btn">Proje Detayları</button>
-    </div>
-    </div>
-   </div>
+<div class="page-container">
+  <h2>Projelerim</h2>
+  <div class="scrollable-container rounded">
+      <div class="project-card-container">
+  <div *ngFor="let project of filteredProjects" class="project-card shadow">
+    <h3>{{ project.projectName }}</h3>
+    <p>Başlangıç Tarihi: {{ project.startDate |date: 'dd/MM/yyyy' }}</p>
+    <p>Bitiş Tarihi: {{ project.endDate |date: 'dd/MM/yyyy' }}</p>
+    <p>Aktif mi?: {{ project.activeProjects ? 'Evet' : 'Hayır'}}</p>
+     <p>Hedeflenen efor: {{ project.effortGoals }} saat</p>
+    <div class="action-buttons">
+    <button (click)="enterEffort(project.projectId)" class="btn rounded effort-btn">Efor Gir</button>
+    <button (click)="viewDetails(project.projectId)" class="btn rounded project-details-btn">Proje Detayları</button>
+  </div>
   </div>
  </div>
-  
+</div>
+</div>

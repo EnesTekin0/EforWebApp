@@ -1,0 +1,68 @@
+<div class="page-container">
+    <div class="form-container">
+      <form [formGroup]="projectForm" (ngSubmit)="submitProject()">
+        <fieldset>
+  
+          <div class="form-group">
+            <label for="project_name">Proje ismi</label>
+            <input
+              type="text"
+              id="project_name"
+              formControlName="projectName"
+              required
+            />
+          </div>
+         <div class="form-group">
+            <label for="startDate">Başlama tarihi giriniz</label>
+            <input
+              type="date"
+              id="startDate"
+              formControlName="startDate"
+            />
+          </div>
+          <div class="form-group">
+            <label for="endDate">Bitiş tarihi giriniz</label>
+            <input
+              type="date"
+              id="endDate"
+              formControlName="endDate"
+            />
+          </div>
+  
+          
+        
+  
+          <section class="example-section">
+            <mat-checkbox
+              formControlName="activeprojects"
+            >Aktif proje
+            </mat-checkbox>
+          </section>
+  
+          <div class="example-button-row">
+            <div class="example-flex-container">
+              <div class="example-button-container">
+                <button
+                  mat-fab
+                  extended
+                  class="btn-submit"
+                  type="submit"
+                >
+                Create
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="createSuccess" class="success-message">Proje başarıyla oluşturuldu
+          </div>
+          <div *ngIf="updateSuccess" class="success-message">Proje başarıyla güncellendi
+          </div>
+          <div *ngIf="createError" class="error-message">
+            Tüm boşlukları doldurunuz!
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  

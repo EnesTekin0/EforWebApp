@@ -24,6 +24,7 @@ import { AllProjectComponent } from './all-project/all-project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import { ProjectComponent } from './project/project.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     MyProjectComponent,
     AllProjectComponent,
     ProjectDetailsComponent
+   
   ],
   imports: [
     MatToolbarModule,
@@ -52,7 +54,8 @@ import { MatIconModule } from '@angular/material/icon';
     HeaderComponent,
     MatIconModule, 
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProjectComponent
   ],
   
   providers: [

@@ -9,6 +9,7 @@ import { EffortComponent } from './effort/effort.component';
 import { MyProjectComponent } from './my-project/my-project.component';
 import { AllProjectComponent } from './all-project/all-project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path:'effort/:id', component:EffortComponent },
   { path:'myproject', component:MyProjectComponent },
   { path:'allproject', component:AllProjectComponent },
-  { path:'projectdetails/:id', component:ProjectDetailsComponent }
+  { path:'projectdetails/:id', component:ProjectDetailsComponent },
+  { path:'project', component:ProjectComponent }
 ];
 
 
