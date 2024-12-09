@@ -1,3 +1,49 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div class="sidebar d-flex flex-column flex-shrink-0">
+  
+    <div class="logo p-3 text-center">
+      <img src="assets/kodiks-logo-dark.svg" alt="logo" style="max-width: 100%; height: 40px;" [routerLink]="['/register']">
+    </div>
+  
+    
+    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    
+      <li>
+        <a routerLink="/register" routerLinkActive="active" class="nav-link text-dark py-3" title="Kaydol">
+         <svg class="bi" width="24" height="24" role="img" aria-label="Kaydol"><use xlink:href="#person-add"/></svg>
+         <span  >Kaydol</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/employee" routerLinkActive="active" class="nav-link text-dark py-3" title="Çalışanlar">
+         <svg class="bi" width="24" height="24" role="img" aria-label="Çalışanlar"><use xlink:href="#people"/></svg>
+         <span>Çalışanlar</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/allproject" routerLinkActive="active" class="nav-link text-dark py-3" title="Projeler">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Projeler"><use xlink:href="#folder"/></svg>
+         <span>Projeler</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/myproject" routerLinkActive="active" class="nav-link text-dark py-3" title="Projelerim">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Projelerim"><use xlink:href="#star"/></svg>
+          <span>Projelerim</span>
+          </a>
+      </li>
+      <li>
+        <a routerLink="/project" routerLinkActive="active" class="nav-link text-dark py-3" title="Proje Ekle">
+          <svg class="bi" width="24" height="24" role="img" aria-label="Proje Ekle"><use xlink:href="#plus-circle"/></svg>
+          <span>Proje Ekle</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+  
+  
 <app-footer></app-footer>

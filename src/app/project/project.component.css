@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 94.67vh;
+    min-height:100vh;
     background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
     background-size: 400% 400%;
     animation: backgroundMove 10s ease infinite;
@@ -124,6 +124,10 @@
   
   }
   
+  h1{
+    color: #c6c7ca;
+    font-weight: bold;
+  }
   
   .example-h2 {
     margin: 10px;
@@ -140,7 +144,11 @@
   .example-margin {
     margin: 1px;
   }
-  
+  .title{
+    font-size:x-large;
+    color: #270b6d;
+    text-align: center;
+  }
   .success-message {
     color: rgb(72, 148, 72);
     margin-top: 20px;

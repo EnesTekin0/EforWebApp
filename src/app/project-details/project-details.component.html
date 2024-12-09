@@ -1,7 +1,10 @@
-<div *ngIf="project" class="project-details-container">
+<div class="container">
+  <h1>Proje Detayları</h1>
+  <div *ngIf="project" class="project-details-container">
     <h2>{{ project.projectName }}</h2>
     <p><strong>Başlangıç Tarihi:</strong> {{ project.startDate | date: 'dd/MM/yyyy' }}</p>
     <p><strong>Bitiş Tarihi:</strong> {{ project.endDate | date: 'dd/MM/yyyy' }}</p>
     <p><strong>Aktif mi?</strong> {{ project.activeProjects ? 'Evet' : 'Hayır'}}</p>
   </div>
+</div>
   

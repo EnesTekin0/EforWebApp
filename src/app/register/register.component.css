@@ -4,11 +4,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 94.67vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
   background-size: 400% 400%;
   animation: backgroundMove 10s ease infinite;
   padding: 40px;
+}
+
+
+h1{
+  color: #dbdbdf;
+  font-weight: bold;
 }
 
 .form-container {

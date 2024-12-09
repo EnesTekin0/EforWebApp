@@ -3,12 +3,26 @@
     padding: 20px;
     border: 1px solid #180c36;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgb(212, 211, 211);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #180c36;
+    width: 300px;
   }
-  
+  h1{
+    color: aliceblue;
+  }
   h2 {
     color: #180c36;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
+    background-size: 400% 400%;
+    animation: backgroundMove 10s ease infinite;
+    padding: 40px;
+    max-width: 100%;
+    align-items: center;
   }
   

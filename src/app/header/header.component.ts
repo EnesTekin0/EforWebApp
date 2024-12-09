@@ -17,5 +17,7 @@ export class HeaderComponent {
   constructor(private router: Router) { } 
   navigateTo(path: string): void { 
     this.router.navigate([path]);
+
+    
    }
 }

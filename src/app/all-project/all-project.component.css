@@ -1,5 +1,27 @@
-.all-projects-container {
-  margin: 30px;
+
+.container{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
+  background-size: 400% 400%;
+  animation: backgroundMove 10s ease infinite;
+  padding: 40px;
+  max-width: 100%;
+ }
+
+
+
+ .all-projects-container {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1100px;
+  margin: 1px auto;
+  max-height: 100%;
+  padding: 15px; 
+  height: 500px;
+  border-radius: 12px;
 }
 
 .projects-title {
@@ -7,16 +29,30 @@
   font-size: 2.5em;
   font-weight: bold;
   margin-bottom: 30px;
-  color: #1c0f3d;
+  color: #d1cfc7;
 }
 
 table {
   width: 100%;
+  
 }
 
+table.mat-elevation-z8 {
+  border-radius: 8px; 
+  overflow: hidden; 
+}
+
+table.mat-elevation-z8 th,
+table.mat-elevation-z8 td {
+  padding: 12px; 
+}
+
+
+
 .mat-elevation-z8 {
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #d1cfc7;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+
 }
 
 .mat-header-row, .mat-row {
@@ -33,9 +69,11 @@ table {
   background-color: #180c36;
   margin-right: 10px;
 }
-
+button.mat-button {
+  border-radius: 6px;
+}
 .mat-header-cell {
   font-weight: bold;
 }
 
-tr:hover { background-color: #d1c4e91f; }
+ tr:hover { background-color: #d1c4e91f; }

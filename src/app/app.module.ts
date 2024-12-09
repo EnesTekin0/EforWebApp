@@ -25,7 +25,8 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { ProjectComponent } from './project/project.component';
-
+import {MatListModule} from '@angular/material/list'; 
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,9 @@ import { ProjectComponent } from './project/project.component';
     MatIconModule, 
     MatTableModule,
     ReactiveFormsModule,
-    ProjectComponent
+    ProjectComponent,
+    MatSidenavModule,
+    MatListModule
   ],
   
   providers: [

@@ -1,35 +1,33 @@
-  .navbar{
-    background-color: #1c0f3d;
-    display: flex;
-    justify-content: flex-start;
-    position: sticky;
-    top: 0; 
-  }
-  
-  .header-container{
-    width: 2350px;
-    height: 70px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center; 
-    justify-content: flex-start;
-  }
+.sidebar {
+  height: 100vh; 
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000; 
+  width: 6.5rem; 
+  overflow-x: hidden; 
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+}
 
-  img {
-    width: 100px;  
-    height: auto;   
-    margin-left: 0.5cm; 
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
-  
-  button {
-    color: rgba(255, 255, 255, 0.500)!important;
-  }
-  
-  button.mat-button:hover {
-    background-color: #432e5b;
-  }
+.sidebar .nav-link {
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #6684a1; 
+  border-radius: 4px;
+}
+
+.main-content {
+  margin-left: 6.5rem; 
+}
+
+.logo img {
+  max-height: 40px;
+}
+
+.dropdown img {
+  max-width: 32px; 
+}
