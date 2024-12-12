@@ -4,13 +4,12 @@
       <img src="assets/kodiks-logo-dark.svg" alt="logo" style="max-width: 100%; height: 40px;" [routerLink]="['/register']">
     </div>
   
-    
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
     
       <li>
         <a routerLink="/register" routerLinkActive="active" class="nav-link text-dark py-3" title="Kaydol">
          <svg class="bi" width="24" height="24" role="img" aria-label="Kaydol"><use xlink:href="#person-add"/></svg>
-         <span  >Kaydol</span>
+         <span>Kaydol</span>
         </a>
       </li>
       <li>
@@ -40,10 +39,9 @@
     </ul>
   </div>
   
-  
   <div class="main-content">
+    <app-loader [isLoading]="isLoading"></app-loader>
     <router-outlet></router-outlet>
   </div>
-  
   
 <app-footer></app-footer>

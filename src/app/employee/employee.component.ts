@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-
+import { LoaderService } from '../services/loader.service';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -15,51 +15,68 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrl: './employee.component.css',
 })
 export class EmployeeComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['name', 'groups', 'hireDate', 'activeEmployees', 'actions'];
+  displayedColumns: string[] = [
+    'name',
+    'groups',
+    'hireDate',
+    'activeEmployees',
+    'actions',
+  ];
   dataSource = new MatTableDataSource<EmployeeDto>();
   employees: EmployeeDto[] = [];
   filterActive = true;
-  sortColumn: string = ''; 
-  sortDirection: string = 'asc'; 
-    options={
-      timeOut: 3000,
-      showProgressBar: true,
-      pauseOnHover: true,
-      clickToClose: true
-    };
+  isLoading: boolean = false;
+  sortColumn: string = '';
+  sortDirection: string = 'asc';
+  options = {
+    timeOut: 3000,
+    showProgressBar: true,
+    pauseOnHover: true,
+    clickToClose: true,
+  };
 
   employeeSubscription!: Subscription;
+  loaderSubscription!: Subscription;
 
-  
-  deleteSuccess:boolean=false;
+  deleteSuccess: boolean = false;
 
-  constructor(private employeeService: EmployeeService, private router: Router, private dialog: MatDialog) { }
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router,
+    private dialog: MatDialog,
+    private loaderService: LoaderService
+  ) {}
 
   ngOnInit(): void {
+    this.loaderSubscription = this.loaderService
+      .getLoaderState()
+      .subscribe((state) => {
+        this.isLoading = state;
+      });
     this.loadEmployees();
   }
 
- 
   loadEmployees() {
+    this.loaderService.show(); // Loader'ı gösteriyoruz
     this.employeeSubscription = this.employeeService.getEmployee().subscribe(
       (data: EmployeeDto[]) => {
         this.dataSource.data = data;
         this.sortEmployees();
+        this.loaderService.hide(); // Başarı durumunda loader'ı gizliyoruz
       },
-      error => {
+      (error) => {
         console.error('Error loading employees', error);
+        // this.loaderService.hide(); // Hata durumunda loader'ı kapatıyoruz
       }
     );
   }
 
-  
   sortEmployees() {
     let directionMultiplier = this.sortDirection === 'asc' ? 1 : -1;
 
     this.employees.sort((a, b) => {
       if (this.sortColumn === 'id') {
-       
-        const idA = a.employeeId || 0; 
+        const idA = a.employeeId || 0;
         const idB = b.employeeId || 0;
         return (idA - idB) * directionMultiplier;
       } else if (this.sortColumn === 'firstName') {
@@ -69,17 +86,14 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     });
   }
 
-  
   onSortColumn(column: string) {
     if (this.sortColumn === column) {
-      
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
     } else {
-      
       this.sortColumn = column;
-      this.sortDirection = 'asc'; 
+      this.sortDirection = 'asc';
     }
-    this.sortEmployees(); 
+    this.sortEmployees();
   }
 
   editEmployee(id: number | undefined) {
@@ -92,7 +106,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     if (id !== undefined) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent);
 
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           this.employeeService.deleteEmployee(id).subscribe(
             () => {
@@ -105,7 +119,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
               }, 4000);
               this.loadEmployees();
             },
-            error => {
+            (error) => {
               console.error('Error deleting employee', error);
             }
           );
@@ -119,6 +133,9 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.loaderSubscription) {
+      this.loaderSubscription.unsubscribe();
+    }
     if (this.employeeSubscription) {
       this.employeeSubscription.unsubscribe();
     }

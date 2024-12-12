@@ -1,14 +1,13 @@
-
 .page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh;
     background: linear-gradient(135deg, #180c36 25%, #180c36 100%);
     background-size: 400% 400%;
     animation: backgroundMove 10s ease infinite;
-    padding: 40px;
+    padding: 65px 40px 40px;
   }
   
   @keyframes backgroundMove {
@@ -16,14 +15,14 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
-  
-  h2 {
-    font-size: 2em;
-    color: #bdbcb8;
-    margin-bottom: 20px;
-    text-align: center; 
+
+  .projects-title {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 50px;
+    color: #d1cfc7;
   }
-  
   
   .scrollable-container {
     width: 100%;
@@ -44,7 +43,6 @@
     background-color: #bdbcb8;
     border-radius: 10px;
   }
-  
   
   .project-card-container {
     display: grid;
@@ -89,7 +87,6 @@
     margin-top: 15px;
   }
   
-
   .btn {
     color: #bdbcb8;
     padding: 8px 12px;
@@ -100,7 +97,6 @@
     transition: background-color 0.3s ease;
   }
   
-
   h4{
     color: #121213;
     margin-top: 0.3cm;
@@ -136,18 +132,18 @@
     opacity: 0.85;
     transform: scale(1.05); 
     background-color: #575291; 
-  
   }
+
   .create-btn:hover {
     opacity: 2;
     transform: scale(1.03); 
     background-color: #e3e4ff;  
   
   }
+
   .project-card p {
     color: #7A7A7A;
   }
-  
   
   .success-message {
     color: rgb(199, 189, 189);
@@ -159,4 +155,3 @@
     text-align: center;
     box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
   }
-  

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EmployeeProjectService } from '../services/employeeproject.service';
 import { EmployeeProjectDto } from '../services/employeeproject-dto.model';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-my-project',
@@ -23,7 +24,8 @@ export class MyProjectComponent implements OnInit, OnDestroy {
   constructor(
     private projectService: ProjectService,
     private employeeProjectService: EmployeeProjectService,
-    private router: Router
+    private router: Router,
+    private loaderService: LoaderService 
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class MyProjectComponent implements OnInit, OnDestroy {
   }
 
   loadEmployeeProjects() {
+    this.loaderService.show(); // Loader'ı gösteriyoruz
     this.employeeProjectSubscription = this.employeeProjectService
       .getEmployeeProjectsByEmployeeId(this.employeeId)
       .subscribe(
@@ -51,9 +54,11 @@ export class MyProjectComponent implements OnInit, OnDestroy {
         this.projects = data;
         console.log('Projects:', this.projects);
         this.filterProjectsByEmployee(); // Projeleri filtreleyelim
+        this.loaderService.hide(); // Başarı durumunda loader'ı gizliyoruz
       },
       (error) => {
         console.error('Error loading projects', error);
+        // this.loaderService.hide(); // Hata durumunda loader'ı kapatıyoruz
       }
     );
   }

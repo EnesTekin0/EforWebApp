@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ProjectService } from '../services/project.service';
 import { ProjectDto } from '../services/project-dto.model';
 import { Router } from '@angular/router';
-
+import { LoaderService } from '../services/loader.service'; 
 
 @Component({
   selector: 'app-all-project',
@@ -17,19 +17,22 @@ export class AllProjectComponent implements OnInit, OnDestroy {
 
   projectSubscription!: Subscription;
   
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(private projectService: ProjectService, private router: Router, private loaderService: LoaderService ) {}
 
   ngOnInit(): void {
     this.loadProject();
   }
 
   loadProject() {
+    this.loaderService.show(); // Loader'ı gösteriyoruz
     this.projectSubscription = this.projectService.getProject().subscribe(
       (data: ProjectDto[]) => {
         this.dataSource.data = data;
+        this.loaderService.hide(); // Başarı durumunda loader'ı gizliyoruz
       },
       error => {
         console.error('Error loading projects', error);
+        // this.loaderService.hide(); // Hata durumunda loader'ı kapatıyoruz 
       }
     );
   }
