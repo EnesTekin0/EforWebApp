@@ -1,7 +1,7 @@
 <div class="sidebar d-flex flex-column flex-shrink-0">
   
     <div class="logo p-3 text-center">
-      <img src="assets/kodiks-logo-dark.svg" alt="logo" style="max-width: 100%; height: 40px;" [routerLink]="['/register']">
+      <img src="assets/kodiks-logo-dark.svg" alt="logo" style="max-width: 100%; height: 40px;" [routerLink]="['/myproject']">
     </div>
   
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
@@ -9,7 +9,13 @@
       <li>
         <a routerLink="/register" routerLinkActive="active" class="nav-link text-dark py-3" title="Kaydol">
          <svg class="bi" width="24" height="24" role="img" aria-label="Kaydol"><use xlink:href="#person-add"/></svg>
-         <span>Kaydol</span>
+         <span>Kayıt Ol</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/login" routerLinkActive="active" class="nav-link text-dark py-3" title="Giriş">
+         <svg class="bi" width="24" height="24" role="img" aria-label="Giriş"><use xlink:href="#person-in"/></svg>
+         <span>Giriş Yap</span>
         </a>
       </li>
       <li>

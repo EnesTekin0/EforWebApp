@@ -6,7 +6,7 @@
         <fieldset>
   
           <div class="form-group">
-            <label for="project_name">Proje ismi</label>
+            <label for="project_name">Proje ismi<sup aria-hidden="true">*</sup></label>
             <input
               type="text"
               id="project_name"
@@ -30,10 +30,7 @@
               formControlName="endDate"
             />
           </div>
-  
-          
-        
-  
+
           <section class="example-section">
             <mat-checkbox
               formControlName="activeprojects"
@@ -56,9 +53,11 @@
             </div>
           </div>
   
-          <div *ngIf="createSuccess" class="success-message">Proje başarıyla oluşturuldu
+          <div *ngIf="createSuccess" class="success-message">
+            Proje başarıyla oluşturuldu
           </div>
-          <div *ngIf="updateSuccess" class="success-message">Proje başarıyla güncellendi
+          <div *ngIf="updateSuccess" class="success-message">
+            Proje başarıyla güncellendi
           </div>
           <div *ngIf="createError" class="error-message">
             Tüm boşlukları doldurunuz!

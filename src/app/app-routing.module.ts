@@ -10,9 +10,10 @@ import { MyProjectComponent } from './my-project/my-project.component';
 import { AllProjectComponent } from './all-project/all-project.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectComponent } from './project/project.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path:'header', component:HeaderComponent },
   { path:'footer', component:FooterComponent  },
   { path:'employee', component:EmployeeComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path:'myproject', component:MyProjectComponent },
   { path:'allproject', component:AllProjectComponent },
   { path:'projectdetails/:id', component:ProjectDetailsComponent },
-  { path:'project', component:ProjectComponent }
+  { path:'project', component:ProjectComponent },
+  { path:'login', component: LoginComponent },
 ];
 
 

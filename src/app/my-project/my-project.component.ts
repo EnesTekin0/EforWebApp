@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { EmployeeProjectService } from '../services/employeeproject.service';
 import { EmployeeProjectDto } from '../services/employeeproject-dto.model';
 import { LoaderService } from '../services/loader.service';
+import { JwtHelperService } from '../services/jwt-helper.service';
 
 @Component({
   selector: 'app-my-project',
@@ -19,28 +20,34 @@ export class MyProjectComponent implements OnInit, OnDestroy {
 
   projectSubscription!: Subscription;
   employeeProjectSubscription!: Subscription;
-  employeeId: number = 1; 
+  employeeId: number | null = null;
 
   constructor(
     private projectService: ProjectService,
     private employeeProjectService: EmployeeProjectService,
     private router: Router,
-    private loaderService: LoaderService 
+    private loaderService: LoaderService,
+    private jwtHelper: JwtHelperService
   ) {}
 
   ngOnInit(): void {
-    this.loadEmployeeProjects();
+    this.employeeId = this.jwtHelper.getEmployeeId();
+    if (this.employeeId !== null) {
+      this.loadEmployeeProjects();
+    } else {
+      console.error('Employee ID not found');
+    }
   }
 
   loadEmployeeProjects() {
-    this.loaderService.show(); // Loader'ı gösteriyoruz
+    this.loaderService.show(); 
     this.employeeProjectSubscription = this.employeeProjectService
-      .getEmployeeProjectsByEmployeeId(this.employeeId)
+      .getEmployeeProjectsByEmployeeId(this.employeeId!)
       .subscribe(
         (data: EmployeeProjectDto[]) => {
           this.employeeProjects = data;
           console.log('Employee Projects:', this.employeeProjects);
-          this.loadProjects(); // EmployeeProject'leri yüklendikten sonra projeleri yükleyelim
+          this.loadProjects(); 
         },
         (error) => {
           console.error('Error loading employee projects', error);
@@ -53,8 +60,8 @@ export class MyProjectComponent implements OnInit, OnDestroy {
       (data: ProjectDto[]) => {
         this.projects = data;
         console.log('Projects:', this.projects);
-        this.filterProjectsByEmployee(); // Projeleri filtreleyelim
-        this.loaderService.hide(); // Başarı durumunda loader'ı gizliyoruz
+        this.filterProjectsByEmployee(); 
+        this.loaderService.hide(); 
       },
       (error) => {
         console.error('Error loading projects', error);

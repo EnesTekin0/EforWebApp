@@ -35,7 +35,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './services/loader.interceptor';
 import { LoaderService } from './services/loader.service';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; 
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { LoginComponent } from './login/login.component'; 
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     AllProjectComponent,
     ProjectDetailsComponent,
     LoaderComponent,
+    LoginComponent,
   ],
   imports: [
     MatToolbarModule,
