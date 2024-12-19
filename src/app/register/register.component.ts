@@ -43,7 +43,7 @@ const moment = _rollupMoment || _moment;
      MatCheckboxModule, FormsModule, MatRadioModule, MatDividerModule, MatIconModule, FormsModule],
 
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit, OnDestroy{
 
 
 
@@ -160,10 +160,8 @@ export class RegisterComponent {
   }
 
   ngOnDestroy() {
-    ""
     if (this.employeeSubscription) {
       this.employeeSubscription.unsubscribe();
     }
   }
-
 }

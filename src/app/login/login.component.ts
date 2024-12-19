@@ -1,22 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   email: string = '';
   password: string = '';
-  // loginForm: FormGroup<any>;
-
+  employeeSubscription!: Subscription;
+  
   constructor(private employeeService: EmployeeService, private router: Router) {}
+  
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   login() {
-    this.employeeService.login(this.email, this.password).subscribe(
+    this.employeeSubscription = this.employeeService.login(this.email, this.password).subscribe(
       () => {
         this.router.navigate(['myproject']);
       },
@@ -25,5 +29,11 @@ export class LoginComponent {
         alert('Giriş başarısız');
       }
     );
+  }
+  
+  ngOnDestroy() {
+    if (this.employeeSubscription) {
+      this.employeeSubscription.unsubscribe();
+    }
   }
 }

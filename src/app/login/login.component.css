@@ -19,7 +19,6 @@
     width: 100%;
     max-width: 450px;
     margin: 40px auto;
-  
   }
   
   form {
@@ -75,7 +74,6 @@
   input:hover{
     transform: scale(1.01); 
     background-color: #ffffff; 
-  
   }
   
   
@@ -98,7 +96,6 @@
   .example-button-row .mat-mdc-button-base {
   margin: 8px 8px 8px 0;
   background-color: #37257e;
-  
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
   }
   
@@ -106,22 +103,18 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  
   }
   
   .btn-submit{
   color: #D1D1D1;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   transition: transform 0.2s ease, background-color 0.2s ease; 
-  
-  
   }
   
   .btn-submit:hover {
     box-shadow: 0 4px 8px rgba(4, 15, 4, 0.4);
     transform: scale(1.05); 
     background-color: #4caf50; 
-  
   }
   
   h1{
@@ -131,7 +124,6 @@
   
   .example-h2 {
     margin: 10px;
-    
   }
   
   .example-section {
@@ -144,11 +136,13 @@
   .example-margin {
     margin: 1px;
   }
+
   .title{
     font-size:x-large;
     color: #270b6d;
     text-align: center;
   }
+
   .success-message {
     color: rgb(72, 148, 72);
     margin-top: 20px;
@@ -157,7 +151,6 @@
     border: 0.5px solid rgb(188, 233, 188);
     border-radius: 15px;
     text-align: center;
-    
     box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
   }
   
@@ -169,11 +162,8 @@
     border: 0.5px solid rgb(153, 10, 10);
     border-radius: 15px;
     text-align: center;
-    
     box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
   }
-  
-  
   
   mat-form-field {
     margin-right: 12px;

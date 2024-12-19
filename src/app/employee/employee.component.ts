@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeDto } from '../services/employee-dto.model';
 import { Router } from '@angular/router';
@@ -37,6 +37,8 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   employeeSubscription!: Subscription;
   loaderSubscription!: Subscription;
+  dialogSubscription!: Subscription;
+  deleteSubscription!: Subscription;
 
   deleteSuccess: boolean = false;
 
@@ -106,23 +108,25 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     if (id !== undefined) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent);
 
-      dialogRef.afterClosed().subscribe((result) => {
+      this.dialogSubscription = dialogRef.afterClosed().subscribe((result) => {
         if (result) {
-          this.employeeService.deleteEmployee(id).subscribe(
-            () => {
-              console.log('Employee deleted successfully');
-              this.deleteSuccess = true;
+          this.deleteSubscription = this.employeeService
+            .deleteEmployee(id)
+            .subscribe(
+              () => {
+                console.log('Employee deleted successfully');
+                this.deleteSuccess = true;
 
-              setTimeout(() => {
-                this.deleteSuccess = false;
-                this.router.navigate(['employee']);
-              }, 4000);
-              this.loadEmployees();
-            },
-            (error) => {
-              console.error('Error deleting employee', error);
-            }
-          );
+                setTimeout(() => {
+                  this.deleteSuccess = false;
+                  this.router.navigate(['employee']);
+                }, 4000);
+                this.loadEmployees();
+              },
+              (error) => {
+                console.error('Error deleting employee', error);
+              }
+            );
         }
       });
     }
@@ -138,6 +142,12 @@ export class EmployeeComponent implements OnInit, OnDestroy {
     }
     if (this.employeeSubscription) {
       this.employeeSubscription.unsubscribe();
+    }
+    if (this.dialogSubscription) {
+      this.dialogSubscription.unsubscribe();
+    }
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe();
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { ProjectDto } from '../services/project-dto.model';
 import { FormGroup, FormControl, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -33,7 +33,7 @@ import { MatRadioModule } from '@angular/material/radio';
      MatCheckboxModule, FormsModule, MatRadioModule, MatDividerModule, MatIconModule, FormsModule],
 
 })
-export class ProjectComponent {
+export class ProjectComponent implements OnInit, OnDestroy {
   
   
   projectForm: FormGroup;
@@ -146,12 +146,8 @@ export class ProjectComponent {
   }
 
   ngOnDestroy() {
-    ""
     if (this.projectSubscription) {
       this.projectSubscription.unsubscribe();
     }
   }
-
-
-
 }
