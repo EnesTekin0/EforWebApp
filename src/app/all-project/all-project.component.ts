@@ -37,6 +37,12 @@ export class AllProjectComponent implements OnInit, OnDestroy {
     );
   }
 
+  editProject(id: number | undefined) {
+    if (id !== undefined) {
+      this.router.navigate(['projectupdate', id]);
+    }
+  }
+
   viewDetails(id: number | undefined) {
     if (id !== undefined) {
       this.router.navigate(['projectdetails', id]);

@@ -98,7 +98,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   editEmployee(id: number | undefined) {
     if (id !== undefined) {
-      this.router.navigate(['update', id]);
+      this.router.navigate(['employeeupdate', id]);
     }
   }
 
