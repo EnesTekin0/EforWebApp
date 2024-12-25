@@ -37,6 +37,9 @@ import { LoaderInterceptor } from './services/loader.interceptor';
 import { LoaderService } from './services/loader.service';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { LoginComponent } from './login/login.component'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter'; // Eğer moment.js kullanıyorsanız
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -45,7 +48,6 @@ import { LoginComponent } from './login/login.component';
     FooterComponent,
     EmployeeComponent,
     ConfirmDialogComponent,
-    EffortComponent,
     MyProjectComponent,
     AllProjectComponent,
     ProjectDetailsComponent,
@@ -71,10 +73,15 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     ProjectComponent,
     MatSidenavModule,
+    EffortComponent,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatMomentDateModule, 
     MatListModule,
   ],
 
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     provideHttpClient(withFetch()),
     provideAnimationsAsync(),
     LoaderService,

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private employeeService: EmployeeService, private router: Router) {}
   
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
   }
 
   login() {

@@ -1,5 +1,6 @@
+
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {  OnDestroy, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeDto } from '../services/employee-dto.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,16 +13,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ChangeDetectionStrategy } from '@angular/core';
-
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
-
+import { FormsModule,   FormGroup } from '@angular/forms';
+import { inject} from '@angular/core';
+import {FormBuilder, Validators,  ReactiveFormsModule} from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
+import { Component, ViewEncapsulation} from '@angular/core';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
@@ -33,19 +37,33 @@ const moment = _rollupMoment || _moment;
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
-  providers: [
-    provideMomentDateAdapter(),
+  
+  encapsulation: ViewEncapsulation.None,
+  providers: [provideNativeDateAdapter()
   ],
   standalone: true,
-  imports: [MatFormFieldModule, MatDatepickerModule,
-     ReactiveFormsModule, MatInputModule, 
+  imports: [MatFormFieldModule, MatDatepickerModule,MatDatepickerModule,
+     ReactiveFormsModule, MatInputModule, MatStepperModule,
     MatButtonModule, MatCardModule, CommonModule,
-     MatCheckboxModule, FormsModule, MatRadioModule, MatDividerModule, MatIconModule, FormsModule],
+     MatCheckboxModule, FormsModule, MatRadioModule
+     , MatDividerModule, MatIconModule, FormsModule],
+     
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class RegisterComponent implements OnInit, OnDestroy{
+export class RegisterComponent {
 
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    // Only highligh dates inside the month view.
+    if (view === 'month') {
+      const date = cellDate.getDate();
 
+      // Highlight the 1st and 20th day of each month.
+      return date === 1 || date === 20 ? 'example-custom-date-class' : '';
+    }
+
+    return '';
+  };
 
   employeeForm: FormGroup;
   readonly date = new FormControl(moment([2017, 0, 1]));
@@ -73,12 +91,12 @@ export class RegisterComponent implements OnInit, OnDestroy{
     private fb: FormBuilder 
   ) { 
     this.employeeForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      password: [''],
-      groups: [''],
-      hireDate: [new Date()],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      groups: ['', Validators.required],
+      hireDate: ['', Validators.required],
       activeEmployees: [true],
     });
   }
@@ -107,6 +125,10 @@ export class RegisterComponent implements OnInit, OnDestroy{
   }
 
   submitEmployee() {
+    if (this.employeeForm.invalid) {
+      this.createError = true; // Hata mesajını tetikler
+      return;
+    }
     if (this.isEditMode && this.id) {
       this.updateEmployee(this.id);
     } else {
@@ -125,7 +147,7 @@ export class RegisterComponent implements OnInit, OnDestroy{
 
         setTimeout(() => {
           this.createSuccess = false;
-          this.router.navigate(['employee']);
+          this.router.navigate(['login']);
         }, 700);
 
       },
@@ -160,8 +182,10 @@ export class RegisterComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
+    ""
     if (this.employeeSubscription) {
       this.employeeSubscription.unsubscribe();
     }
   }
+
 }

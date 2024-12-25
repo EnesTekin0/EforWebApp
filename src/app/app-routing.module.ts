@@ -13,7 +13,7 @@ import { ProjectComponent } from './project/project.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path:'header', component:HeaderComponent },
   { path:'footer', component:FooterComponent  },
   { path:'employee', component:EmployeeComponent },

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height:100vh;
     background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
     background-size: 400% 400%;
@@ -11,12 +10,12 @@
   }
   
   .form-container {
-    background-color: #d1cfc7;
+    background-color: #f3f3f3;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
     margin: 40px auto;
   }
   
@@ -54,23 +53,28 @@
   input[type="email"],
   input[type="password"],
   input[type="date"] {
-    padding: 10px;
-    font-size: em;
-    border: 2.4px solid #2c147a;
-    border-radius: 16px;
-    background-color: #FFF;
-    transition: border-color 0.3s ease;
+  
+    padding: 6px;
+    font-size: 0.9em;
+    background-color: transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
   }
+
+  
+mat-label{
+  font-size: 1em;
+}
+
   
   input:focus {
     border-color: #ab9bf5;
     outline: none;
-    box-shadow: 0 0 8px rgba(129, 199, 132, 0.3);
   }
   
   input:hover{
     transform: scale(1.01); 
-    background-color: #ffffff; 
   }
   
   section {
@@ -134,7 +138,6 @@
   }
 
   .title{
-    font-size:x-large;
     color: #270b6d;
     text-align: center;
   }

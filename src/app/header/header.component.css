@@ -1,33 +1,26 @@
-.sidebar {
-  height: 100vh; 
-  position: fixed; 
-  top: 0;
-  left: 0;
-  z-index: 1000; 
-  width: 6.5rem; 
-  overflow-x: hidden; 
-  overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+
+
+/* Header için genel düzenleme */
+.header {
+  display: flex;
+  justify-content: flex-start; /* Sol tarafa hizalar */
+  align-items: center; /* Dikeyde ortalar */
+  padding: 10px; /* Kenarlardan boşluk bırakır */
+  position: fixed; /* Header sabitlenir */
+  top: 0; /* Üstte konumlandırılır */
+  left: 0; /* Solda konumlandırılır */
+  width: 100%; /* Header genişliği tam ekran */
+  background-color: #1c093f ;
+  z-index: 1000; /* Header'ı diğer öğelerin üstüne taşır */
+  
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar .nav-link {
-  font-size: 0.875rem;
-  transition: background-color 0.3s ease;
-}
-
-.sidebar .nav-link:hover {
-  background-color: #6684a1; 
-  border-radius: 4px;
-}
-
-.main-content {
-  margin-left: 6.5rem; 
-}
-
+/* Logo düzenleme */
 .logo img {
-  max-height: 40px;
+  max-height: 40px; /* Yüksekliği sınırlar */
+  width: auto; /* Genişlik orantılı olur */
 }
 
-.dropdown img {
-  max-width: 32px; 
-}
+
+

@@ -1,35 +1,34 @@
 <div class="page-container">
-  <h1>Proje Ekle</h1>
     <div class="form-container">
       <h2 class="title">Proje Bilgileri</h2>
       <form [formGroup]="projectForm" (ngSubmit)="submitProject()">
         <fieldset>
   
-          <div class="form-group">
-            <label for="project_name">Proje ismi<sup aria-hidden="true">*</sup></label>
-            <input
-              type="text"
-              id="project_name"
-              formControlName="projectName"
-              required
-            />
-          </div>
-         <div class="form-group">
-            <label for="startDate">Başlama tarihi giriniz</label>
-            <input
-              type="date"
-              id="startDate"
-              formControlName="startDate"
-            />
-          </div>
-          <div class="form-group">
-            <label for="endDate">Bitiş tarihi giriniz</label>
-            <input
-              type="date"
-              id="endDate"
-              formControlName="endDate"
-            />
-          </div>
+          <mat-form-field class="form-group">
+            <mat-label for="project_name">Proje ismini giriniz</mat-label>
+            <input matInput type="text" id="project_name" 
+            formControlName="projectName"
+            required  />
+          </mat-form-field>
+
+       
+
+   
+          <mat-form-field class="form-group">
+            <mat-label for="startDate">Başlama tarihi</mat-label>
+            <input matInput [matDatepicker]="startPicker" type="date" id="startDate" formControlName="startDate"/>
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+          
+          <mat-form-field class="form-group">
+            <mat-label for="endDate">Bitiş tarihi</mat-label>
+            <input matInput [matDatepicker]="endPicker" type="date" id="endDate" formControlName="endDate"/>
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+          
+
 
           <section class="example-section">
             <mat-checkbox

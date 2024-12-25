@@ -1,81 +1,62 @@
 <div class="page-container">
-  <h1>Kayıt Ol</h1>
   <div class="form-container">
     <form [formGroup]="employeeForm" (ngSubmit)="submitEmployee()">
       <fieldset>
         <legend>Kullanıcı Bilgileri</legend>
 
-        <div class="form-group">
-          <label for="first_name"
-            >İsminizi giriniz<sup aria-hidden="true">*</sup></label
-          >
-          <input
-            type="text"
-            id="first_name"
-            formControlName="firstName"
-            required
-          />
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>İsminizi giriniz</mat-label>
+          <input matInput type="text" id="first_name" formControlName="firstName" required />
+        </mat-form-field>
 
-        <div class="form-group">
-          <label for="last_name"
-            >Soyisminizi giriniz<sup aria-hidden="true">*</sup></label
-          >
-          <input
-            type="text"
-            id="last_name"
-            formControlName="lastName"
-            required
-          />
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Soyisminizi giriniz</mat-label>
+          <input matInput type="text" id="last_name" formControlName="lastName" required />
+        </mat-form-field>
 
-        <div class="form-group">
-          <label for="email"
-            >Email adresinizi giriniz<sup aria-hidden="true">*</sup></label
-          >
-          <input type="email" id="email" formControlName="email" required />
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email adresinizi giriniz</mat-label>
+          <input matInput type="email" id="email" formControlName="email" required />
+        </mat-form-field>
 
-        <div class="form-group">
-          <label for="password"
-            >Şifrenizi belirleyiniz<sup aria-hidden="true">*</sup></label
-          >
-          <input
-            type="password"
-            id="password"
-            formControlName="password"
-            required
-          />
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Şifrenizi giriniz</mat-label>
+          <input matInput type="password" id="password" formControlName="password" required />
+        </mat-form-field>
 
-        <div class="form-group">
-          <label for="groups">Grup belirtiniz</label>
-          <input type="text" id="groups" formControlName="groups" required />
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Grup belirtiniz</mat-label>
+          <input matInput type="text" id="groups" formControlName="groups" required />
+        </mat-form-field>
 
-        <div class="form-group">
-          <label for="hire">Kayıt tarihinizi giriniz</label>
-          <input type="date" id="hire" formControlName="hireDate" />
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Tarih seçiniz</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="hireDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
-        <section class="example-section">
-          <mat-checkbox formControlName="activeEmployees">
-            Aktif Çalışan
-          </mat-checkbox>
-        </section>
+        <mat-checkbox formControlName="activeEmployees" class="example-full-width">
+          Aktif Çalışan
+        </mat-checkbox>
+
 
         <div class="example-button-row">
           <div class="example-flex-container">
             <div class="example-button-container">
-              <button mat-fab extended class="btn-submit" type="submit">
-                {{ isEditMode ? "Güncelle " : "Kayıt Ol" }}
+              <button
+                mat-fab
+                extended
+                class="btn-submit"
+                type="submit"
+              >
+                {{ isEditMode ? 'Güncelle ' : 'Kaydet' }}
               </button>
             </div>
           </div>
         </div>
 
-        <div *ngIf="createSuccess" class="success-message">
-          Kullanıcı başarıyla oluşturuldu
+        <div *ngIf="createSuccess" class="success-message">Kullanıcı başarıyla oluşturuldu
         </div>
         <div *ngIf="updateSuccess" class="success-message">
           Kullanıcı başarıyla güncellendi

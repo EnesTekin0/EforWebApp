@@ -49,4 +49,3 @@ describe('LoaderInterceptor', () => {
     httpMock.verify();
   });
 });
-

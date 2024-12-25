@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtHelperService {
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
   decodeToken(token: string): any {
     if (!token) return null;
@@ -20,6 +22,11 @@ export class JwtHelperService {
   }
 
   getEmployeeId(): number | null {
+
+
+    if (typeof window === 'undefined') {
+      return null;
+    }
     const token = localStorage.getItem('token');
     if (!token) return null;
 

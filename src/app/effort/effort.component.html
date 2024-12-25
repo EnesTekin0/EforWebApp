@@ -1,18 +1,32 @@
-<div class="container">
-  <div  class="effort-container">
+
+<h1 class="effort-title">{{ projectName }}</h1>
+
+<div class="page-container">
+  
   <h1 class="effort-title">{{ projectName }}</h1>
 
+  <div  class="effort-container">
+
   <form [formGroup]="effortForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="effortAmount">Efor Miktarı:</label>
-      <input id="effortAmount" formControlName="effortAmount" type="number">
-    </div>
-    <div>
-      <label for="effortDate">Tarih:</label>
-      <input id="effortDate" formControlName="effortDate" type="date">
-    </div>
+   <fieldset>
+    <mat-form-field class="example-full-width">
+      <mat-label for="effortAmount">Efor Miktarı</mat-label>
+      <input matInput id="effortAmount" formControlName="effortAmount" type="number" required />
+    </mat-form-field>
+
+    
+    <mat-form-field class="example-full-width">
+      <mat-label for="effortDate">Tarih seçiniz</mat-label>
+      <input matInput [matDatepicker]="picker" id="effortDate" formControlName="effortDate" type="date"/>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
     <button type="submit" [disabled]="effortForm.invalid">Eforu Kaydet</button>
-  </form>
+ </fieldset> 
+</form>
+
 </div>
 </div>
 

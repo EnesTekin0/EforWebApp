@@ -9,3 +9,4 @@ export class LoaderComponent {
   @Input() isLoading: boolean = false;
 
 }
+ 

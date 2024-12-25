@@ -1,72 +1,122 @@
+
+/* Sidebar düzeni */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 150px;
-    height: 100vh;
-    background-color: #1f113f;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    padding-top: 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .sidebar .logo {
-    padding: 17px;
-    text-align: center;
-  }
-  
-  .sidebar .nav {
-    flex-grow: 1;
-  }
-  
-  .sidebar .nav-item {
-    margin: 10px 0;
-  }
-  
-  .sidebar .nav-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 15px 0;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-  
-  .sidebar .nav-link span {
-    margin-right: 22px; 
+  position: fixed; /* Sabitlenmiş sidebar */
+  top: 60px;
+  left: 0;
+  width: 70px; /* Başlangıç genişliği */
+  height: 100vh; /* Tam ekran yüksekliği */
+  background-color: #180c36; /* Sidebar arka planı */
+  padding-top: 20px; /* Sidebar içeriğine üstten boşluk */
+  z-index: 1000; /* Sidebar'ın üstte olması için */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: width 0.3s ease; /* Sidebar genişliği için geçiş efekti */
+}
+
+.sidebar:hover {
+  width: 200px; /* Fare üzerine gelince genişlik */
+  background-color: #1c093f;
+}
+
+/* Logo */
+.sidebar .logo {
+  padding: 17px;
+  text-align: center;
+}
+
+/* Navigation */
+.sidebar .nav {
+  flex-grow: 1;
+}
+
+.sidebar .nav-item {
+  margin: 10px 0;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* İkon ve metni hizala */
+  text-align: left; /* Metin hizalaması */
+  padding: 15px 10px; /* Hover durumunda metinler görünür */
+  border-radius: 4px;
+  transition: background-color 0.3s, padding-left 0.3s ease; /* Geçiş efektleri */
+  color: #dd1010;
+}
+
+.sidebar .nav-link span {
+  margin-left: 10px;
+  opacity: 0; /* Başlangıçta metin gizli */
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  color: #f3f3f3;
+  font-weight: 500;
+}
+
+.sidebar:hover .nav-link span {
+  opacity: 1; /* Fare üzerine gelince metin görünür */
+  visibility: visible;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #2f2a55; /* Hover için arka plan rengi */
+}
+
+.sidebar .nav-link svg {
+  margin-right: 8px;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 70px; /* Sidebar başlangıç genişliği kadar boşluk */
+  background-color: #ffffff; 
+  height: 100vh; 
+  overflow-y: auto; 
+  transition: margin-left 0.3s ease; /* Sidebar genişlemesine uyum sağlar */
+
+}
+
+.sidebar:hover ~ .main-content {
+  margin-left: 200px; /* Hover durumunda içerik bölgesine kayma */
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 50px; /* Mobilde daha dar */
   }
 
-  span{
-    font-weight: bold;
-    color: #b3a8a8;
+  .sidebar:hover {
+    width: 150px; /* Hover durumunda mobil genişlik */
   }
 
-  .sidebar .nav-link:hover {
-    background-color: #2f2a55; 
-  }
-  
-  .sidebar .nav-link svg {
-    margin-right: 8px;
-  }
-  
   .main-content {
-    margin-left: 150px; 
-    background-color: #ffffff; 
-    height: 100vh; 
-    overflow-y: auto; 
+    margin-left: 50px;
   }
-  
-  @media (max-width: 768px) {
-    .sidebar {
-      width: 200px; 
-    }
-  
-    .main-content {
-      margin-left: 200px;
-    }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: 150px;
   }
-  
+}
+/* Seçili olan link için mavi uzun çubuk */
+.sidebar .nav-link.active {
+  position: relative; /* Çubuğun konumunu ayarlamak için */
+  background-color: transparent; /* Arka plan rengi değişmeden kalır */
+  color: #ffffff; /* Seçili linkin yazı rengi */
+}
+
+/* Mavi çubuk */
+.sidebar .nav-link.active::before {
+  content: ""; /* Boş bir içerik */
+  position: absolute; /* Çubuğu yerleştirmek için */
+  left: 0; /* Sol tarafa hizala */
+  top: 0; /* Üste hizala */
+  width: 5px; /* Çubuğun genişliği */
+  height: 100%; /* Linkin tamamını kaplasın */
+  background-color: #686f77; /* Mavi çubuk rengi */
+  border-radius: 0 5px 5px 0; /* Çubuğa yuvarlak kenarlar ekle */
+}
+
+

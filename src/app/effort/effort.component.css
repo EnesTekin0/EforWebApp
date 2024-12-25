@@ -1,29 +1,143 @@
 .effort-container {
-  margin: 20px;
-  padding: 20px;
-  background-color: #e9e5e5;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  height: 300px;
+  background-color: #f3f3f3;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
 }
-.container{
-  display: flex;
+
+.page-container {
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
+  background: linear-gradient(135deg, #180c36 25%, #180c36 100%);
   background-size: 400% 400%;
   animation: backgroundMove 10s ease infinite;
   padding: 40px;
-  max-width: 100%;
-  align-items: center;
+}
+
+h1, .effort-title {
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #f3f3f3;
 }
 
 .effort-title {
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #180c36;
+  color: #180c36; /* Rengi değiştirin, örneğin #180c36 */
+}
+
+
+label {
+  font-size: 1.1em;
+  margin-bottom: 1px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #25175e;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  padding: 4px;
+  font-size: 0.9em;
+  background-color: transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:hover {
+  transform: scale(1.01);
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-size: 1.3em;
+  color: #1c1c66;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.example-full-width {
+  max-width: 350px;
+  width: 100%;
+  height: 80px;
+}
+
+mat-label {
+  font-size: 0.9em;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 1px;
 }
 
 .effort-table {
@@ -39,7 +153,6 @@
 }
 
 .effort-table th {
-  background-color: #180c36;
   color: white;
 }
 
@@ -47,23 +160,10 @@ form div {
   margin-bottom: 15px;
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
 button {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #220e53;
   color: rgb(83, 76, 143);
   font-weight: bold;
   border: none;
@@ -77,4 +177,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
-  
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  mat-form-field.example-full-width {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}

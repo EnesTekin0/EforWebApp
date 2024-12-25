@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { EmployeeDto } from './employee-dto.model';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +16,13 @@ export class EmployeeService {
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private http: HttpClient) {}
+
+  constructor(
+    private http: HttpClient,
+    
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object // Platform kontrolü için eklendi
+  ) {}
 
   getEmployee(): Observable<EmployeeDto[]> {
     return this.http.get<EmployeeDto[]>(this.apiUrl);
@@ -51,14 +58,25 @@ export class EmployeeService {
     const url = `${this.apiUrl}/login`;
     return this.http.post<any>(url, { email, password }, this.httpOptions).pipe(
       tap((response) => {
-        localStorage.setItem('token', response.token);
+        if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem('token', response.token);
+        }
       })
     );
   }
+
   logout() {
-    localStorage.removeItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+      
+      this.router.navigate(['register']);
+    }
   }
+
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('token');
+    }
+    return false;
   }
 }

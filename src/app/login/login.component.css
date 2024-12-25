@@ -1,171 +1,194 @@
-
 .page-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height:100vh;
-    background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
-    background-size: 400% 400%;
-    animation: backgroundMove 10s ease infinite;
-    padding: 40px;
-  }
-  
-  .form-container {
-    background-color: #d1cfc7;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
-    margin: 40px auto;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  fieldset {
-    border: none;
-    padding: 0;
-  }
-  
-  legend {
-    font-size: 1.3em;
-    color: #1c1c66;
-    margin-bottom: 20px;
-    font-weight: 500;
-    text-align: center;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  
-  
-  label {
-    font-size: 1.1em;
-    color: #25175e;
-    margin-bottom: 5px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="date"] {
-    padding: 10px;
-    font-size: em;
-    border: 2.4px solid #2c147a;
-    border-radius: 16px;
-    background-color: #FFF;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #ab9bf5;
-    outline: none;
-    box-shadow: 0 0 8px rgba(129, 199, 132, 0.3);
-  }
-  
-  input:hover{
-    transform: scale(1.01); 
-    background-color: #ffffff; 
-  }
-  
-  
-  section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #180c36 25%, #180c36  100%);
+  background-size: 400% 400%;
+  animation: backgroundMove 10s ease infinite;
+  padding: 40px;
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+
+h1{
+  color: #f3f3f3;
+  font-weight: bold;
+}
+
+.form-container {
+  background-color: #f3f3f3;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-size: 1.3em;
+  color: #1c1c66;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+label {
+  font-size: 1.1em;
+  color: #25175e;
+  margin-bottom: 1px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  padding: 1px;
+  font-size: 0.9em;
+  background-color: transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+mat-label{
+  font-size: 0.9em;
+}
+
+input:focus {
+  border-color: #100736;
+  outline: none;
+}
+
+input:hover{
+  transform: scale(1.01); 
+}
+
+section {
   display: table;
-  }
-  
-  .example-label {
+}
+
+.example-label {
   display: table-cell;
   font-size: 14px;
   margin-left: 8px;
   min-width: 120px;
-  }
-  
-  .example-button-row {
+}
+
+.example-button-row {
   display: table-cell;
   max-width: 600px;
-  }
-  
-  .example-button-row .mat-mdc-button-base {
+}
+
+.example-button-row .mat-mdc-button-base {
   margin: 8px 8px 8px 0;
   background-color: #37257e;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .example-flex-container {
+}
+
+.example-flex-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  }
-  
-  .btn-submit{
+}
+
+.btn-submit{
   color: #D1D1D1;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   transition: transform 0.2s ease, background-color 0.2s ease; 
-  }
-  
-  .btn-submit:hover {
-    box-shadow: 0 4px 8px rgba(4, 15, 4, 0.4);
-    transform: scale(1.05); 
-    background-color: #4caf50; 
-  }
-  
-  h1{
-    color: #c6c7ca;
-    font-weight: bold;
-  }
-  
-  .example-h2 {
-    margin: 10px;
-  }
-  
-  .example-section {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 60px;
-  }
-  
-  .example-margin {
-    margin: 1px;
+}
+
+.btn-submit:hover {
+  box-shadow: 0 4px 8px rgba(4, 15, 4, 0.4);
+  transform: scale(1.05); 
+  background-color: #4caf50; 
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 1px;
+}
+
+.success-message {
+  color: rgb(72, 148, 72);
+  margin-top: 20px;
+  background-color: #c4e7c4;
+  padding: 10px;
+  border: 0.5px solid rgb(188, 233, 188);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
+}
+
+.error-message {
+  color: rgb(199, 189, 189);
+  margin-top: 20px;
+  background-color: #9e1c1c;
+  padding: 10px;
+  border: 0.5px solid rgb(153, 10, 10);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
+}
+
+button.example-custom-date-class {
+  background: rgb(77, 71, 126);
+  border-radius: 100%;
+}
+
+
+.mat-form-field {
+  width: 100%;
+}
+
+mat-form-field.example-full-width {  
+  max-width: 350px; /* Max genişlik korunur */
+  width: 100%;      /* Dinamik genişlik sağlanır */
+  height: 80px;
+}
+
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px; /* Küçük ekranlarda daha az padding */
   }
 
-  .title{
-    font-size:x-large;
-    color: #270b6d;
-    text-align: center;
+  mat-form-field.example-full-width {
+    max-width: 100%; /* Ekrana sığması için tam genişlik */
+    width: 100%;
   }
 
-  .success-message {
-    color: rgb(72, 148, 72);
-    margin-top: 20px;
-    background-color: #c4e7c4;
-    padding: 10px;
-    border: 0.5px solid rgb(188, 233, 188);
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
+  .btn-submit {
+    width: 100%; /* Düğme tam genişlikte görünür */
   }
-  
-  .error-message {
-    color: rgb(199, 189, 189);
-    margin-top: 20px;
-    background-color: #9e1c1c;
-    padding: 10px;
-    border: 0.5px solid rgb(153, 10, 10);
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 1px 4px 6px rgba(13, 39, 13, 0.4);
-  }
-  
-  mat-form-field {
-    margin-right: 12px;
-  }
-  
+}
